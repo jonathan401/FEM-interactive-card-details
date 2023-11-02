@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Frontend Mentor | Interactive card details form</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="sr-only">Interactive form</h1>
+    </header>
+    <main>
+      <div class="form-feedback">
+        <div class="card card--front">
+          <!-- <img src="./images/bg-card-front.png" alt="" /> -->
+          <div class="card__content card--front__content">
+            <img
+              class="card--front__img"
+              src="./images/card-logo.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <div class="card--front__meta">
+              <p class="card--front__number" data-input="card-number">
+                0000 0000 0000 0000
+              </p>
+              <div class="card--front__placeholder">
+                <p data-input="card-name" class="card--front__name">
+                  Jane Appleseed
+                </p>
+                <p class="card--front__date">
+                  <span data-input="month">00</span>/<span data-input="year"
+                    >00</span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card--back">
+          <!-- <img src="./images/bg-card-back.png" alt="" /> -->
+          <div class="card__content card--back__content">
+            <p class="card--back__cvc" data-input="cvc">000</p>
+          </div>
+        </div>
+      </div>
+      <section class="container">
+        <h2 class="sr-only">Add card details</h2>
+        <form class="form">
+          <div class="form__group">
+            <label for="card-name"> Cardholder Name </label>
+            <input
+              type="text"
+              name="card-name"
+              id="card-name"
+              placeholder="e.g. Jane Appleseed"
+              class="form__control"
+              autocomplete="off"
+              aria-labelledby="card-name"
+            />
+            <span
+              aria-hidden="true"
+              class="form__error-msg"
+              data-errorFor="card-name"
+              >wrong format</span
+            >
+            <span
+              class="form__error-msg-sr-only sr-only"
+              aria-hidden="true"
+              data-for="card-name"
+              >Must be two words, both capitalized. The first your firstname,
+              and the second, your last name</span
+            >
+          </div>
+          <div class="form__group">
+            <label for="card-number"> Card Number </label>
+            <input
+              type="text"
+              name="card-number"
+              id="card-number"
+              placeholder="e.g. 1234 5678 9123 0000"
+              class="form__control"
+              maxlength="19"
+              autocomplete="off"
+              aria-labelledby="card-number"
+            />
+            <span
+              aria-hidden="true"
+              class="form__error-msg"
+              data-errorFor="card-number"
+              >wrong format (e.g 0000 0000 0000 0000)</span
+            >
+            <span
+              class="form__error-msg-sr-only sr-only"
+              aria-hidden="true"
+              data-for="card-number"
+              >Must be sixteen digits</span
+            >
+          </div>
+          <div class="form__group form__group--shared">
+            <div class="form__group">
+              <p class="label" id="expiry-label" aria-hidden="true">
+                Exp. Date (MM/YY)
+              </p>
+              <div class="form__group form__group--duo-inputs">
+                <div class="form__group">
+                  <!-- <label for="month" class="sr-only">Month</label> -->
+                  <input
+                    type="text"
+                    name="month"
+                    id="month"
+                    placeholder="MM"
+                    class="form__control"
+                    maxlength="2"
+                    autocomplete="off"
+                    aria-labelledby="expiry-label"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="form__error-msg"
+                    data-errorFor="month"
+                    >Wrong format (e.g 03)</span
+                  >
+                  <span
+                    class="form__error-msg-sr-only sr-only"
+                    aria-hidden="true"
+                    data-for="month"
+                    >Must be two digits and less than 12. No spaces</span
+                  >
+                </div>
+                <div class="form__group">
+                  <!-- <label for="year" class="sr-only">Year</label> -->
+                  <input
+                    type="text"
+                    name="year"
+                    id="year"
+                    placeholder="YY"
+                    class="form__control"
+                    maxlength="2"
+                    autocomplete="off"
+                    aria-labelledby="expiry-label"
+                  />
+                  <span
+                    aria-hidden="true"
+                    class="form__error-msg"
+                    data-errorFor="year"
+                    >Wrong format (e.g 12)</span
+                  >
+                  <span
+                    class="form__error-msg-sr-only sr-only"
+                    aria-hidden="true"
+                    data-for="year"
+                    >Must be two digits. No spaces</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- for cvc -->
+            <div class="form__group">
+              <label for="cvc">Cvc</label>
+              <input
+                type="text"
+                name="cvc"
+                id="cvc"
+                placeholder="e.g. 123"
+                class="form__control"
+                maxlength="3"
+                autocomplete="off"
+              />
+              <span
+                aria-hidden="true"
+                class="form__error-msg"
+                data-errorFor="cvc"
+                >Wrong format</span
+              >
+              <span
+                class="form__error-msg-sr-only sr-only"
+                aria-hidden="true"
+                data-for="cvc"
+                >Must be three digits. No spaces</span
+              >
+            </div>
+          </div>
+          <button type="submit" class="btn btn--submit">Confirm</button>
+        </form>
+        <!-- Completed state start -->
+        <div class="confirmation hidden">
+          <div class="confirmation__content">
+            <img
+              class="confirmation__image"
+              src="./images/icon-complete.svg"
+              alt=""
+              aria-hidden="true"
+            />
+            <h2 class="header-2">Thank You!</h2>
+            <p class="text-gray">We've added your card details</p>
+          </div>
+          <button class="btn btn--reset">Continue</button>
+        </div>
+      </div>
+    </main>
+    <!-- <footer>
+      <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </div>
+    </footer> -->
+    <script src="app.js"></script>
+  </body>
+</html>
